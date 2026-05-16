@@ -36,6 +36,10 @@ export function useTodos() {
   const pending = todos.filter((t) => !t.completed);
   const completed = todos.filter((t) => t.completed);
 
+  const reload = () => {
+    setTodos(todoService.getAll());
+  };
+
   return {
     todos,
     pending,
@@ -44,5 +48,6 @@ export function useTodos() {
     toggleTodo,
     deleteTodo,
     editTodo,
+    reload,
   };
 }

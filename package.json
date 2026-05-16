@@ -5,12 +5,28 @@
   "scripts": {
     "dev": "node scripts/dev.js",
     "build": "tsc -p tsconfig.electron.json && vite build",
+    "dist": "pnpm build && electron-builder --mac",
     "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "Mi app personal de To-Do",
+  "build": {
+    "appId": "com.paco.todo",
+    "productName": "To-Do",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    }
+  },
   "devDependencies": {
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",

@@ -1,16 +1,33 @@
 import { useTodos } from "./hooks/useTodos";
+import { exportService } from "./services/exportService";
 import Header from "./components/Header";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const { pending, completed, addTodo, toggleTodo, deleteTodo, editTodo } =
-    useTodos();
+  const {
+    pending,
+    completed,
+    addTodo,
+    toggleTodo,
+    deleteTodo,
+    editTodo,
+    reload,
+  } = useTodos();
+
+  const handleImport = async () => {
+    try {
+      await exportService.importFromFile();
+      reload();
+    } catch (err) {
+      console.error("Import failed:", err);
+    }
+  };
 
   return (
     <div className="app">
       <div className="drag-region" />
-      <Header pendingCount={pending.length} />
+      <Header pendingCount={pending.length} onImport={handleImport} />
       <TodoForm onAdd={addTodo} />
 
       <TodoList

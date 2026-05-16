@@ -41,6 +41,32 @@ body {
   color: #fff;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-header {
+  background: none;
+  border: 1px solid #333;
+  color: #888;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-header:hover {
+  border-color: #6c63ff;
+  color: #6c63ff;
+}
+
 .counter {
   font-size: 0.8rem;
   color: #888;
