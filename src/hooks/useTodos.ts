@@ -79,6 +79,21 @@ export function useTodos() {
     );
   };
 
+  const editSubtask = (todoId: string, subtaskId: string, text: string) => {
+    setTodos(
+      todos.map((t) =>
+        t.id === todoId
+          ? {
+              ...t,
+              subtasks: t.subtasks.map((s) =>
+                s.id === subtaskId ? { ...s, text: text.trim() } : s,
+              ),
+            }
+          : t,
+      ),
+    );
+  };
+
   const reload = () => {
     setTodos(todoService.getAll());
   };
@@ -97,6 +112,7 @@ export function useTodos() {
     addSubtask,
     toggleSubtask,
     deleteSubtask,
+    editSubtask,
     reload,
   };
 }

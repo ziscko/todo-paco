@@ -9,6 +9,7 @@ interface TodoListProps {
   onAddSubtask: (todoId: string, text: string) => void;
   onToggleSubtask: (todoId: string, subtaskId: string) => void;
   onDeleteSubtask: (todoId: string, subtaskId: string) => void;
+  onEditSubtask: (todoId: string, subtaskId: string, text: string) => void;
 }
 
 function TodoList({
@@ -19,6 +20,7 @@ function TodoList({
   onAddSubtask,
   onToggleSubtask,
   onDeleteSubtask,
+  onEditSubtask,
 }: TodoListProps) {
   if (todos.length === 0) return null;
 
@@ -34,6 +36,7 @@ function TodoList({
           onAddSubtask={onAddSubtask}
           onToggleSubtask={onToggleSubtask}
           onDeleteSubtask={onDeleteSubtask}
+          onEditSubtask={onEditSubtask}
         />
       ))}
     </ul>

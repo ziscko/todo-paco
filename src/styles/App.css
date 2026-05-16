@@ -218,6 +218,25 @@ body {
   margin-bottom: 6px;
 }
 
+.btn-collapse {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: transform 0.2s, color 0.2s;
+  transform: rotate(90deg);
+}
+
+.btn-collapse.collapsed {
+  transform: rotate(0deg);
+}
+
+.btn-collapse:hover {
+  color: #6c63ff;
+}
+
 .btn-sub {
   background: none;
   border: 1px solid #333;
