@@ -12,6 +12,9 @@ function App() {
     toggleTodo,
     deleteTodo,
     editTodo,
+    addSubtask,
+    toggleSubtask,
+    deleteSubtask,
     reload,
   } = useTodos();
 
@@ -35,6 +38,9 @@ function App() {
         onToggle={toggleTodo}
         onDelete={deleteTodo}
         onEdit={editTodo}
+        onAddSubtask={addSubtask}
+        onToggleSubtask={toggleSubtask}
+        onDeleteSubtask={deleteSubtask}
       />
 
       {completed.length > 0 && (
@@ -45,6 +51,9 @@ function App() {
             onToggle={toggleTodo}
             onDelete={deleteTodo}
             onEdit={editTodo}
+            onAddSubtask={addSubtask}
+            onToggleSubtask={toggleSubtask}
+            onDeleteSubtask={deleteSubtask}
           />
         </>
       )}

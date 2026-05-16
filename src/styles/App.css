@@ -211,3 +211,89 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+/* Subtasks */
+.todo-item-wrapper {
+  list-style: none;
+  margin-bottom: 6px;
+}
+
+.btn-sub {
+  background: none;
+  border: 1px solid #333;
+  color: #666;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-sub:hover {
+  border-color: #6c63ff;
+  color: #6c63ff;
+}
+
+.subtask-count {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.subtask-form {
+  display: flex;
+  gap: 6px;
+  margin-left: 30px;
+  margin-top: 4px;
+}
+
+.subtask-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #16162a;
+  color: #eee;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.subtask-input:focus {
+  border-color: #6c63ff;
+}
+
+.subtask-list {
+  list-style: none;
+  margin-left: 30px;
+  margin-top: 4px;
+}
+
+.subtask-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  margin-bottom: 2px;
+  transition: background 0.2s;
+}
+
+.subtask-item:hover {
+  background: #1e1e3a;
+}
+
+.subtask-item.completed .subtask-text {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.subtask-text {
+  flex: 1;
+  font-size: 0.82rem;
+  color: #ccc;
+}
+
+.checkbox-sm {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}

@@ -15,6 +15,7 @@ export function useTodos() {
       text: text.trim(),
       completed: false,
       createdAt: Date.now(),
+      subtasks: [],
     };
     setTodos([todo, ...todos]);
   };
@@ -33,12 +34,57 @@ export function useTodos() {
     setTodos(todos.map((t) => (t.id === id ? { ...t, text: text.trim() } : t)));
   };
 
-  const pending = todos.filter((t) => !t.completed);
-  const completed = todos.filter((t) => t.completed);
+  const addSubtask = (todoId: string, text: string) => {
+    setTodos(
+      todos.map((t) =>
+        t.id === todoId
+          ? {
+              ...t,
+              subtasks: [
+                ...t.subtasks,
+                {
+                  id: Date.now().toString(),
+                  text: text.trim(),
+                  completed: false,
+                },
+              ],
+            }
+          : t,
+      ),
+    );
+  };
+
+  const toggleSubtask = (todoId: string, subtaskId: string) => {
+    setTodos(
+      todos.map((t) =>
+        t.id === todoId
+          ? {
+              ...t,
+              subtasks: t.subtasks.map((s) =>
+                s.id === subtaskId ? { ...s, completed: !s.completed } : s,
+              ),
+            }
+          : t,
+      ),
+    );
+  };
+
+  const deleteSubtask = (todoId: string, subtaskId: string) => {
+    setTodos(
+      todos.map((t) =>
+        t.id === todoId
+          ? { ...t, subtasks: t.subtasks.filter((s) => s.id !== subtaskId) }
+          : t,
+      ),
+    );
+  };
 
   const reload = () => {
     setTodos(todoService.getAll());
   };
+
+  const pending = todos.filter((t) => !t.completed);
+  const completed = todos.filter((t) => t.completed);
 
   return {
     todos,
@@ -48,6 +94,9 @@ export function useTodos() {
     toggleTodo,
     deleteTodo,
     editTodo,
+    addSubtask,
+    toggleSubtask,
+    deleteSubtask,
     reload,
   };
 }
