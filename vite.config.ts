@@ -4,6 +4,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "./", // required for Electron production builds
+  server: {
+    port: 5995,
+  },
   build: {
     outDir: "dist",
   },
