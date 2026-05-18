@@ -19,12 +19,10 @@ function createWindow() {
   // In development, load from Vite dev server
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    win.webContents.openDevTools();
   } else {
-    // In production, load the build (resolve absolute path)
     const indexPath = path.resolve(__dirname, "../dist/index.html");
     win.loadFile(indexPath);
-    // Abrir DevTools automáticamente para debug
-    win.webContents.openDevTools();
   }
 }
 

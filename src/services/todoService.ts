@@ -8,7 +8,13 @@ const STORAGE_KEY = "todos";
 export const todoService = {
   getAll(): Todo[] {
     const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
+    const todos = data ? JSON.parse(data) : [];
+    return Array.isArray(todos)
+      ? todos.map((t) => ({
+          ...t,
+          subtasks: Array.isArray(t.subtasks) ? t.subtasks : [],
+        }))
+      : [];
   },
 
   saveAll(todos: Todo[]): void {
